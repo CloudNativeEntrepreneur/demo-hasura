@@ -36,9 +36,10 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: |
+          CloudNativeEntrepreneur/demo-hasura:latest
+          CloudNativeEntrepreneur/demo-hasura:${{ github.sha }}
         labels: ${{ steps.meta.outputs.labels }}
-
 
     # - name: Checkout prod
     #   uses: actions/checkout@v2
@@ -49,7 +50,7 @@ jobs:
     # - name: Update manifests
     #   run: |
     #     sleep 1
-    #     cat apps/demo-hasura/overlays/staging/kustomization.yaml | sed -e "s@- ${{ secrets.DOCKERHUB_USERNAME }}/demo-hasura:.*@- ${{ secrets.DOCKERHUB_USERNAME }}/demo-hasura:${{ github.sha }}@g" | tee apps/demo-hasura/overlays/staging/kustomization.yaml
+    #     cat apps/demo-hasura/overlays/staging/kustomization.yaml | sed -e "s@- CloudNativeEntrepreneur/demo-hasura:.*@- CloudNativeEntrepreneur/demo-hasura:${{ github.sha }}@g" | tee apps/demo-hasura/overlays/staging/kustomization.yaml
     #     git config --global user.email "${{ secrets.GH_ORG }}@cloudnativeentrepreneur.com"
     #     git config --global user.name "${{ secrets.GH_ORG }}"
     #     git add .
