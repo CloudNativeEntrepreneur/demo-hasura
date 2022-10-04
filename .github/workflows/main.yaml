@@ -46,6 +46,8 @@ jobs:
           cloudnativeentrepreneur/demo-hasura:latest
           cloudnativeentrepreneur/demo-hasura:${{ github.sha }}
         labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=registry,ref=cloudnativeentrepreneur/demo-hasura:buildcache
+        cache-to: type=registry,ref=cloudnativeentrepreneur/demo-hasura:buildcache,mode=max
 
     # - name: Checkout prod
     #   uses: actions/checkout@v2
