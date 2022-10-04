@@ -42,12 +42,12 @@ jobs:
         context: .
         push: true
         tags: |
-          ${{ steps.meta.outputs.tags }}
-          cloudnativeentrepreneur/demo-hasura:latest
-          cloudnativeentrepreneur/demo-hasura:${{ github.sha }}
+          ghcr.io/${{ steps.meta.outputs.tags }}
+          ghcr.io/cloudnativeentrepreneur/demo-hasura:latest
+          ghcr.io/cloudnativeentrepreneur/demo-hasura:${{ github.sha }}
         labels: ${{ steps.meta.outputs.labels }}
-        cache-from: type=registry,ref=cloudnativeentrepreneur/demo-hasura:buildcache
-        cache-to: type=registry,ref=cloudnativeentrepreneur/demo-hasura:buildcache,mode=max
+        cache-from: type=registry,ref=ghcr.io/cloudnativeentrepreneur/demo-hasura:buildcache
+        cache-to: type=registry,ref=ghcr.io/cloudnativeentrepreneur/demo-hasura:buildcache,mode=max
 
     # - name: Checkout prod
     #   uses: actions/checkout@v2
