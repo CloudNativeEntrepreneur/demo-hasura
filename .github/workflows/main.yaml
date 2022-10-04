@@ -37,7 +37,10 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: |
+          ${{ steps.meta.outputs.tags }}
+          cloudnativeentrepreneur/demo-hasura:latest
+          cloudnativeentrepreneur/demo-hasura:${{ github.sha }}
         labels: ${{ steps.meta.outputs.labels }}
 
     # - name: Checkout prod
