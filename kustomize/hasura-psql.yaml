@@ -3,7 +3,7 @@ kind: postgresql
 metadata:
   name: demo-hasura-postgresql
 spec:
-  teamId: example
+  teamId: demo
 
   numberOfInstances: 1
 
