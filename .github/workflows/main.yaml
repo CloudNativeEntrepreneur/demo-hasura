@@ -12,6 +12,7 @@ jobs:
       with:
         submodules: recursive
 
+    # used to run builders for architectures other than the host
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
 
@@ -27,18 +28,16 @@ jobs:
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
-      uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+      uses: docker/metadata-action@v4
       with:
-        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        images: cloudnativeentrepreneur/demo-hasura
 
     - name: Build and push Docker image
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
         context: .
         push: true
-        tags: |
-          cloudnativeentrepreneur/demo-hasura:latest
-          cloudnativeentrepreneur/demo-hasura:${{ github.sha }}
+        tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
 
     # - name: Checkout prod
