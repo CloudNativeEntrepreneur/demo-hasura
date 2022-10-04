@@ -1,8 +1,8 @@
 HASURA_ENDPOINT?=http://demo-hasura.default.127.0.0.1.sslip.io
-LOCAL_DEV_CLUSTER ?= kind-local-dev-cluster
+LOCAL_DEV_CLUSTER ?= rancher-desktop
 NOW := $(shell date +%m_%d_%Y_%H_%M)
 SERVICE_NAME := demo-hasura
-HASURA_GRAPHQL_DATABASE_URL=postgres://readmodel:$(kubectl get secret readmodel.example-readmodel-postgresql.credentials.postgresql.acid.zalan.do)@readmodel.default.cluster.svc.local:5432/readmodel
+HASURA_GRAPHQL_DATABASE_URL=postgres://hasura:$(kubectl get secret hasura.demo-hasura-postgresql.credentials.postgresql.acid.zalan.do)@demo-hasura-postgresql:5432/hasura
 
 # Does what's described in Readme, runs in the background - `attach-to-tmux-session` to attach to the session where it is running
 onboard: refresh-kind-image
