@@ -1,7 +1,7 @@
-HASURA_ENDPOINT?=http://example-hasura.default.127.0.0.1.sslip.io
+HASURA_ENDPOINT?=http://demo-hasura.default.127.0.0.1.sslip.io
 LOCAL_DEV_CLUSTER ?= kind-local-dev-cluster
 NOW := $(shell date +%m_%d_%Y_%H_%M)
-SERVICE_NAME := example-hasura
+SERVICE_NAME := demo-hasura
 HASURA_GRAPHQL_DATABASE_URL=postgres://readmodel:$(kubectl get secret readmodel.example-readmodel-postgresql.credentials.postgresql.acid.zalan.do)@readmodel.default.cluster.svc.local:5432/readmodel
 
 # Does what's described in Readme, runs in the background - `attach-to-tmux-session` to attach to the session where it is running
@@ -30,7 +30,7 @@ deploy-to-local-cluster:
 		-f ./charts/$(SERVICE_NAME)/values.yaml \
 		--set image.repository=dev.local/$(SERVICE_NAME),image.tag=$(NOW) \
 		| kubectl apply -f -
-	kubectl wait --for=condition=ready ksvc example-hasura --timeout=600s
+	kubectl wait --for=condition=ready ksvc demo-hasura --timeout=600s
 
 delete-local-deployment:
 	kubectl ctx $(LOCAL_DEV_CLUSTER)

@@ -1,11 +1,11 @@
-# example-hasura
+# demo-hasura
 
 Auth Example's Hasura instance, configs, migrations, and job to run migrations.
 
 This particular example relies on SchemaHero to manage the "readmodel" database. However, if you'd like to use Hasura to manage this DB's migrations, simply uncomment the following lines:
 
-https://github.com/CloudNativeEntrepreneur/example-hasura/blob/master/Dockerfile#L7
-https://github.com/CloudNativeEntrepreneur/example-hasura/blob/master/apply-migrations.sh#L6
+https://github.com/CloudNativeEntrepreneur/demo-hasura/blob/master/Dockerfile#L7
+https://github.com/CloudNativeEntrepreneur/demo-hasura/blob/master/apply-migrations.sh#L6
 
 ## Environment Variabls
 
@@ -21,12 +21,12 @@ To get the Hasura url, run `kubectl get ksvc` in the namespace.
 
 ```
 NAME                           URL                                                                LATESTCREATED                        LATESTREADY                          READY   REASON
-example-hasura                https://example-hasura.jx-staging.cloudnativeentrepreneur.com                 example-hasura-00008                example-hasura-00008                True   
+demo-hasura                https://demo-hasura.jx-staging.cloudnativeentrepreneur.com                 demo-hasura-00008                demo-hasura-00008                True   
 ```
 
 ### Model services
 
-To add a new model service as an available env variable for Hasura actions, edit `charts/example-hasura/templates/ksvc.yaml`
+To add a new model service as an available env variable for Hasura actions, edit `charts/demo-hasura/templates/ksvc.yaml`
 
 ## What the Chart creates
 

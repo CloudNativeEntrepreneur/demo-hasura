@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: example-hasura
+  name: demo-hasura
 spec:
   template:
     spec:
@@ -14,17 +14,17 @@ spec:
         - name: POSTGRES_USERNAME
           valueFrom:
             secretKeyRef:
-              name: hasura.example-hasura-postgresql.credentials.postgresql.acid.zalan.do
+              name: hasura.demo-hasura-postgresql.credentials.postgresql.acid.zalan.do
               key: username
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: hasura.example-hasura-postgresql.credentials.postgresql.acid.zalan.do
+              name: hasura.demo-hasura-postgresql.credentials.postgresql.acid.zalan.do
               key: password
         - name: POSTGRES_DATABASE
           value: hasura
         - name: POSTGRES_HOST
-          value: example-hasura-postgresql
+          value: demo-hasura-postgresql
         - name: POSTGRES_PORT
           value: "5432"
         - name: HASURA_GRAPHQL_DATABASE_URL
